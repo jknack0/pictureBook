@@ -61,7 +61,7 @@ header {
 }
 
 .search-bar input  {
-  background-image: url('./images/searchIcon.png');
+  background-image: url('../../images/searchIcon.png');
   background-position: center;
   background-position-x: 98%;
   background-repeat: no-repeat;
@@ -117,8 +117,8 @@ header {
   width: 300px;
   padding: 10px;
   text-align: center;
-  margin-left: 40%;
-  margin-top: 3%;
+  margin-left: 38%;
+  margin-top: 5%;
   padding-bottom: 3%;
   border-radius: 3px;
 }

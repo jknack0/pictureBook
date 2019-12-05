@@ -1,15 +1,16 @@
 import React from 'react';
 import './App.css';
-import NavBar from './components/NavBar'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import Login from './components/Login'
-import Register from './components/Register'
-import PostImage from './components/PostImage'
-import Home from './components/Home'
+import NavBar from '../NavBar'
+import {Router, Switch, Route} from 'react-router-dom'
+import Login from '../Login'
+import Register from '../Register'
+import PostImage from '../PostImage'
+import Home from '../Home'
+import history from '../../history/index'
 
 const App = () => {
   return (
-    <Router>
+    <Router history={history}>
       <NavBar />
       <Switch>
         <Route path='/' exact component={Home} />
@@ -17,8 +18,7 @@ const App = () => {
         <Route path='/register' component={Register} />
         <Route path='/postimage' component={PostImage} />
       </Switch>
-    </Router>
-    
+    </Router>  
   )
 }
 
