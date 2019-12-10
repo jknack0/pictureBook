@@ -46,6 +46,7 @@ const Register = () => {
               loggedIn: true
             }
           })
+          localStorage.setItem('username', registerObject.username)
           history.push('/')
         })
         .catch(error => {
@@ -56,6 +57,7 @@ const Register = () => {
               loggedIn: true
             }
           })
+          localStorage.setItem('username', registerObject.username)
           history.push('/')
         })
     }

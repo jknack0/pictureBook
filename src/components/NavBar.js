@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import SearchBar from './SearchBar'
 import {Link} from 'react-router-dom'
 import userStore from '../redux/userStore'
 
 const NavBar = () => {
-  const [loggedIn, setLoggedIn] = useState(userStore.getState().loggedIn)
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem('username'))
 
   userStore.subscribe(() => {
     setLoggedIn(userStore.getState().loggedIn)
@@ -18,6 +18,7 @@ const NavBar = () => {
         loggedIn: false
       }
     })
+    localStorage.removeItem('username')
   })
 
   if (!loggedIn) {

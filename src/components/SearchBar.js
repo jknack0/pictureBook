@@ -1,10 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 const SearchBar = () => {
-  return (
+  const [searchWord, setSearchWord] = useState('')
+
+  const handleSearchChange = (event) => {
+    setSearchWord(event.target.value)
+  }
+    return (
     <div className="search-bar">
       <form>
-        <input type="text" placeholder="Search..."/>
+        <input type="text" placeholder="Search..." onChange={handleSearchChange} />
       </form>
     </div>
   )

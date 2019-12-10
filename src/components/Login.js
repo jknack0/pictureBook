@@ -29,7 +29,14 @@ const Login = () => {
         .login(loginObject)
         .then(response => {
           localStorage.setItem('username', loginObject.username)
-          console.log(localStorage.getItem('username'))
+          userStore.dispatch({
+            type: 'LOGIN_USER',
+            data: {
+              username: loginObject.username,
+              loggedIn: true
+            }
+          })
+          history.push('/')
         })
         .catch(error => {
           userStore.dispatch({

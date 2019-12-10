@@ -1,8 +1,20 @@
 import React from 'react'
+import ImageTile from './ImageTile'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div className="post-body">
+      <ImageTile />
+      <ImageTile />
+      <ImageTile />
+      <ImageTile />
+      <ImageTile />
+      <ImageTile />
+      <ImageTile />
+      <ImageTile />
+      <ImageTile />
+      <ImageTile />
+    </div>
   )
 }
 

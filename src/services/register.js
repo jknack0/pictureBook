@@ -1,8 +1,8 @@
 import axios from 'axios'
 const baseUrl = '/api/register'
 
-const register = (newObject) => {
-  const request =  axios.post(baseUrl, newObject)
+const register = (registerObject) => {
+  const request =  axios.post(baseUrl, registerObject)
   return request.then(response => response.data)
 }
 

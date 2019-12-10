@@ -6,6 +6,7 @@ import Login from '../Login'
 import Register from '../Register'
 import PostImage from '../PostImage'
 import Home from '../Home'
+import ImageView from '../ImageView'
 import history from '../../history/index'
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
         <Route path='/postimage' component={PostImage} />
+        <Route path='/postview/:id' component={ImageView} />
       </Switch>
     </Router>  
   )
