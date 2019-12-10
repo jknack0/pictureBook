@@ -135,10 +135,11 @@ header {
 }
 
 .image-tile {
-  padding-top: 2%;
+  padding-top: 3%;
 }
 
 .image-tile img{
+  border-radius: 3px;
   width: 50vw;
 }
 
@@ -153,6 +154,7 @@ header {
 
 .image-view-body img {
   width: 80vw;
+  border-radius: 3px;
 }
 
 .comments {

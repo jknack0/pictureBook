@@ -38,7 +38,7 @@ const Comments = () => {
   }, [])
 
   const displayComments = () => 
-    comments.map(comment => <div key={comment.username} className='comment'>{comment.username}: {comment.comment}</div>)
+    comments.map((comment, index) => <div key={index} className='comment'>{comment.username}: {comment.comment}</div>)
 
 
   if(comments !== null) {
