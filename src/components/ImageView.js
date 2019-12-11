@@ -3,9 +3,11 @@ import Comments from './Comments'
 
 const ImageView = ({match}) => {
   const imageUrl = `/images/img.png`
+  
   useEffect(() => {
     window.scrollTo(0,0)
   },[])
+  
   return(
     <div className='image-view-body'>
       <h2>Image Title</h2>
