@@ -1,58 +1,43 @@
 import React, {useState, useEffect} from 'react'
 
 const Comments = () => {
-  const [comments, setComments] = useState(null)
-  const dummyComments = [
-    {
-      username: 'dummy username',
-      comment: 'this is someones dummy comment'
-    },
-    {
-      username: 'dummy username',
-      comment: 'this is someones dummy comment'
-    },
-    {
-      username: 'dummy username',
-      comment: 'this is someones dummy comment'
-    },
-    {
-      username: 'dummy username',
-      comment: 'this is someones dummy comment'
-    },
-    {
-      username: 'dummy username',
-      comment: 'this is someones dummy comment'
-    },
-    {
-      username: 'dummy username',
-      comment: 'this is someones dummy comment'
-    },
-    {
-      username: 'dummy username',
-      comment: 'this is someones dummy comment'
-    },
-  ]
+  const [comments, setComments] = useState([])
+  const [comment, setComment] = useState('')
 
-  useEffect(() => {
-    setComments(dummyComments)
-  }, [])
+  const handleCommentChange = (event) => {
+    setComment(event.target.value)
+  }
 
-  const displayComments = () => 
-    comments.map((comment, index) => <div key={index} className='comment'>{comment.username}: {comment.comment}</div>)
+  const handleComment = (event) => {
+    event.preventDefault()
+    
+    const newCommentObject = {
+      username: localStorage.getItem('username'),
+      comment: comment
+    }
 
+    const updatedComments = comments.concat(newCommentObject)
+    setComment('')
 
-  if(comments !== null) {
-    return (
+    setComments(updatedComments)
+
+  }
+
+  const displayComments = () => comments.map((comment, index) => <div key={index} className='comment'>{comment.username}: {comment.comment}</div>)
+
+  return (
+    <>
       <div className='comments'>
         <h3>Comments</h3>
         {displayComments()}
       </div>
-    )
-  } else {
-    return (
-      <div><h2>Loading...</h2></div>
-    )
-  }
+      <div className='comment-form'>
+        <form onSubmit={handleComment}>
+          <input id='comment-input' type='text' value={comment} onChange={handleCommentChange} placeholder='Enter your comment..' />
+        </form>
+      </div>
+    </>
+  )
 }
 
 export default Comments

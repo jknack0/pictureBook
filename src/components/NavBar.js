@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import SearchBar from './SearchBar'
 import {Link} from 'react-router-dom'
 import userStore from '../redux/userStore'

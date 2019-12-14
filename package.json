@@ -12,6 +12,7 @@
     "react-scripts": "3.2.0",
     "redux": "^4.0.4"
   },
+  "proxy":"http://10.143.129.251:3000/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import postImageServices from '../services/postImage'
 import FormData from 'form-data'
-import history from '../history/index'
 
 const PostImage = () => {
   const [title, setTitle] = useState('')
@@ -25,29 +24,12 @@ const PostImage = () => {
     
     const formData = new FormData()
 
-    const newPostObject = {
-      title: title,
-      description: description,
-      username: localStorage.getItem('username'),
-    }
-
-    formData.append('info', newPostObject)
+    formData.append('username', localStorage.getItem('username'))
+    formData.append('title', title)
+    formData.append('description', description)
     formData.append('image', file)
-    
 
-    for (var pair of formData.entries()) {
-      console.log(pair[0]+ ' - ' + pair[1]); 
-    }
-
-    postImageServices
-    .postImage(formData)
-    .then(() => {
-
-    })
-    .catch(error => {
-      history.push('/')
-      console.log(error)
-    })
+    postImageServices.postImage(formData)
   }
 
   return (

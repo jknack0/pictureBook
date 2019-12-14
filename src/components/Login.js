@@ -1,7 +1,5 @@
 import React, {useState} from 'react'
 import loginServices from '../services/login'
-import userStore from '../redux/userStore'
-import history from '../history/index'
 
 const Login = () => {
   const [username, setUsername] = useState('')
@@ -25,33 +23,9 @@ const Login = () => {
         username: username,
         password: password,
       }
-      loginServices
-        .login(loginObject)
-        .then(response => {
-          localStorage.setItem('username', loginObject.username)
-          userStore.dispatch({
-            type: 'LOGIN_USER',
-            data: {
-              username: loginObject.username,
-              loggedIn: true
-            }
-          })
-          history.push('/')
-        })
-        .catch(error => {
-          userStore.dispatch({
-            type: 'LOGIN_USER',
-            data: {
-              username: loginObject.username,
-              loggedIn: true
-            }
-          })
-          localStorage.setItem('username', loginObject.username)
-          console.log(localStorage.getItem('username'))
-          history.push('/')
-        })
-      }
+      loginServices.login(loginObject)
     }
+  }
 
   return (
     <div className='form-container'>

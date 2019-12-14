@@ -1,7 +1,5 @@
 import React, {useState} from 'react'
 import registerServices from '../services/register'
-import userStore from '../redux/userStore'
-import history from '../history/index'
 
 const Register = () => {
   const [username, setUsername] = useState('')
@@ -36,30 +34,8 @@ const Register = () => {
         email: email,
         password: password
       }
-      registerServices
-        .register(registerObject)
-        .then(response => {
-          userStore.dispatch({
-            type: 'LOGIN_USER',
-            data: {
-              username: registerObject.username,
-              loggedIn: true
-            }
-          })
-          localStorage.setItem('username', registerObject.username)
-          history.push('/')
-        })
-        .catch(error => {
-          userStore.dispatch({
-            type: 'LOGIN_USER',
-            data: {
-              username: registerObject.username,
-              loggedIn: true
-            }
-          })
-          localStorage.setItem('username', registerObject.username)
-          history.push('/')
-        })
+      registerServices.register(registerObject)
+        
     }
   }
 
