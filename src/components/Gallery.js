@@ -6,20 +6,23 @@ import galleryServices from '../services/gallery'
 const Gallery = () => {
   const [posts, setPosts] = useState([])
   const [search, setSearch] = useState('')
+  let filteredPosts = posts.filter(post => post.title.includes(search) || post.description.includes(search))
   
   searchStore.subscribe(() => {
-    setSearch(searchStore.getState())
+    setSearch(searchStore.getState().search)
   })
 
   useEffect(() => {
-    
+     
   }, [search])
+
+  console.log(search)
 
   useEffect(() => {
     galleryServices.getPosts(setPosts)
   }, [])
 
-  const displayPosts = () => posts.map(post => <ImageTile post={post} />)
+  const displayPosts = () => filteredPosts.map((post, i) => <ImageTile key={i} post={post} />)
   
 
   console.log(posts)

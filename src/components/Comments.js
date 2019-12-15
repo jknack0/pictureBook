@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
+import commentServices from '../services/comment'
 
-const Comments = () => {
+const Comments = ({postId}) => {
   const [comments, setComments] = useState([])
   const [comment, setComment] = useState('')
 
@@ -8,19 +9,27 @@ const Comments = () => {
     setComment(event.target.value)
   }
 
+  useEffect(() => {
+    commentServices.getComments(postId, setComments)
+  }, [postId])
+
+
   const handleComment = (event) => {
     event.preventDefault()
-    
-    const newCommentObject = {
-      username: localStorage.getItem('username'),
-      comment: comment
+    if(localStorage.getItem('username')){
+      const newCommentObject = {
+        username: localStorage.getItem('username'),
+        comment: comment
+      }
+
+      commentServices.postComment(postId, newCommentObject)
+      const updatedComments = comments.concat(newCommentObject)
+      setComment('')
+      setComments(updatedComments)
+    } else {
+      alert('Please log in to post comments')
+      setComment('')
     }
-
-    const updatedComments = comments.concat(newCommentObject)
-    setComment('')
-
-    setComments(updatedComments)
-
   }
 
   const displayComments = () => comments.map((comment, index) => <div key={index} className='comment'>{comment.username}: {comment.comment}</div>)
